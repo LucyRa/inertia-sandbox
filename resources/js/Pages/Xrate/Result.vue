@@ -1,0 +1,32 @@
+<template>
+    <section>
+        <Head title="Xrate - Result" />
+        <h1>Forex - Exchange Rates</h1>
+
+        <pre>
+            {{ data }}
+        </pre>
+
+        <table>
+            <thead>
+                <th>From (curr)</th>
+                <th>To (curr)</th>
+                <th>Conversion Rate</th>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+      </section>
+</template>
+
+<script setup>
+import { Head } from '@inertiajs/vue3'
+
+defineProps({ data: Object })
+</script>
