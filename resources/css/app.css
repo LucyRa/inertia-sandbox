@@ -2,3 +2,18 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+
+/* Remedy "reset" */
+@import './remedy.css';
+
+/* Global styles */
+:root {
+    --base: #1e1e2e;
+    --lavender-50: #dee2ff;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    background-color: var(--base);
+    color: var(--lavender-50);
+}
