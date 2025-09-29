@@ -8,7 +8,7 @@
                 <div class="form_input">
                     <label for="from">From:</label>
                     <select id="from" name="from">
-                        <option disabled>Select a currency</option>
+                        <option disabled selected>-Currency-</option>
                         <option v-for="code in codes" :key="`${code[0]}-from`" :value="code[0]">{{ code[1] }}</option>
                     </select>
                 </div>
@@ -16,7 +16,7 @@
                 <div class="form_input">
                     <label for="to">To:</label>
                     <select id="to" name="to">
-                        <option disabled>Select a currency</option>
+                        <option disabled selected>-Currency-</option>
                         <option v-for="code in codes" :key="`${code[0]}-to`" :value="code[0]">{{ code[1] }}</option>
                     </select>
                 </div>
