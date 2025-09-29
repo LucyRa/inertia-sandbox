@@ -1,0 +1,41 @@
+/* STRUCTURE */
+article,
+aside,
+main,
+section {
+    width: 100%;
+}
+
+aside,
+article,
+section {
+    padding: 0.875rem 0.75rem;
+    background-color: var(--base-50);
+    border-radius: 1.125rem;
+}
+
+aside {
+
+}
+
+main:where(:has(aside)) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+@media only screen and (min-width: 50rem) {
+    aside {
+        max-width: 18.75rem;
+    }
+}
+
+@media only screen and (min-width: 64rem) {
+    main:where(:has(aside)) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        row-gap: 2.5rem;
+    }
+}

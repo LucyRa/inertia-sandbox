@@ -1,0 +1,16 @@
+/* BASE */
+:root {
+    font-size: 16px;
+    --base: #011717;
+    --base-50: #022828;
+    --text: #CBD3D3;
+    --teal: #01A3A3;
+}
+
+body {
+    background-color: var(--base);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    color: var(--text);
+    padding: 0.75rem;
+}
