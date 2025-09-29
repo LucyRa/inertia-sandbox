@@ -1,15 +1,14 @@
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
 /* Remedy "reset" */
 @import './remedy.css';
 
 /* Global styles */
 :root {
+    font-size: 16px;
     --base: #1e1e2e;
     --lavender-50: #dee2ff;
+    --lavender-900: #7f86b5;
+    --teal-500: #94e2d5;
+    --white: #ffffff;
 }
 
 body {
@@ -18,3 +17,60 @@ body {
     color: var(--lavender-50);
 }
 
+section {
+    --vw: calc(100vw / 1);
+    width: 100%;
+    padding-inline: calc(var(--vw) / 30);
+}
+
+/* Form */
+form {
+    width: 100%;
+    max-width: 40rem;
+
+    .form_group {
+        /**/
+    }
+}
+
+.form-small {
+    max-width: 20rem;
+}
+
+/* Buttons & Inputs */
+input,
+select,
+textarea,
+button {
+    padding: 0.75rem 1rem;
+
+    &:focus-visible {
+        outline: 0.25rem var(--teal-500) solid;
+        outline-offset: -1px;
+    }
+}
+
+input,
+select,
+textarea {
+    background-color: var(--lavender-900);
+    border-radius: 0.25rem;
+}
+
+button[type="submit"] {
+    border-radius: 99rem;
+}
+
+label {
+    display: block;
+}
+
+select {
+    position: relative;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    appearance:none;
+    background: no-repeat url('data:image/svg+xml,<svg data-slot="icon" fill="none" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path></svg>') var(--lavender-50);
+    background-position: right 0.5rem center;
+    background-size: 1rem;
+}

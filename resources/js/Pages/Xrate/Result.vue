@@ -3,10 +3,6 @@
         <Head title="Xrate - Result" />
         <h1>Forex - Exchange Rates</h1>
 
-        <pre>
-            {{ data }}
-        </pre>
-
         <table>
             <thead>
                 <th>From (curr)</th>
@@ -16,9 +12,9 @@
 
             <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ data.base_code }}</td>
+                    <td>{{ data.target_code }}</td>
+                    <td>{{ data.rate }}</td>
                 </tr>
             </tbody>
         </table>
