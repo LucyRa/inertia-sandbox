@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 
 use Inertia\Inertia;
@@ -14,25 +15,16 @@ class XrateController extends Controller
         return Inertia::render('Xrate/Index');
     }
 
-    public function result (Request $request)
-    {
-        $rates = $request->session()->get('rates');
-
-        // if (!$rates) ... TBC
-
-        return Inertia::render('Xrate/Result', [
-            'data' => json_decode($rates, true)
-        ]);
-    }
-
     public function rates (Request $request)
     {
         // Unvalidated, unsecure... TESTING
-        $rates = $this->getFxData($request->input('from'), $request->input('to'));
+        $rates = json_decode($this->getFxData($request->input('from'), $request->input('to')), true);
 
-        $request->session()->flash('rates', $rates);
+        dd($rates);
 
-        return to_route('xrate.result');
+        return Response::json([
+
+        ]);
     }
 
     private function getFxData (string $from = 'GBP', string $to = 'EUR') : String
