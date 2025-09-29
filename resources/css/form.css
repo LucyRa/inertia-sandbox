@@ -33,6 +33,7 @@ textarea {
 }
 
 button[type="submit"] {
+    padding-block: 0.5rem;
     border-radius: 99rem;
     background-color: var(--teal); /* Add states & transitions... */
     font-weight: 500;
