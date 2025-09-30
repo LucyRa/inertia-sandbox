@@ -22,6 +22,9 @@ class XrateController extends Controller
         // Unvalidated, unsecure... TESTING
         $rates = $this->getFxData($request->query('from'), $request->query('to'));
 
+        // TODO:: If error...
+
+        // Success
         return response()->json([
             'component' => "Xrate/Index",
             'props' => ['conversion' => $rates],
