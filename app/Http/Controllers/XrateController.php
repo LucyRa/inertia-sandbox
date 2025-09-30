@@ -12,37 +12,39 @@ class XrateController extends Controller
 {
     public function index ()
     {
-        return Inertia::render('Xrate/Index');
+        return Inertia::render('Xrate/Index', [
+            'conversion' => Inertia::optional(fn () => self::rates())
+        ]);
     }
 
     public function rates (Request $request)
     {
         // Unvalidated, unsecure... TESTING
-        $rates = json_decode($this->getFxData($request->input('from'), $request->input('to')), true);
+        $rates = $this->getFxData($request->query('from'), $request->query('to'));
 
-        dd($rates);
-
-        return Response::json([
-
-        ]);
+        return response()->json([
+            'component' => "Xrate/Index",
+            'props' => ['conversion' => $rates],
+            'url' => $request->query('url'),
+            ], 200, [
+                'Vary' => 'Accept',
+                'X-Inertia' => true,
+            ]);
     }
 
-    private function getFxData (string $from = 'GBP', string $to = 'EUR') : String
+    private function getFxData (string $from = 'GBP', string $to = 'EUR') : Array
     {
-        /* Alpha Vantage API */
-        // $json = file_get_contents('https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=' . $from . '&to_currency=' . $to . '&apikey=' . env('ALPHA_VANTAGE_KEY'));
-
         /* Exchange Rate API */
         $response = Http::get("https://v6.exchangerate-api.com/v6/" . env('EXCHANGE_RATE_KEY') . "/pair/{$from}/{$to}");
 
-        if ($response->failed()) return [];
+        if ($response->failed()) return response()->json(['error' => 'Unable to retrieve exchange rate data.']);
 
-        $data = json_encode([
-            'base_code' => $response['base_code'],
-            'target_code' => $response['target_code'],
-            'rate' => $response['conversion_rate']
-        ]);
+        $xrate = $response->json();
 
-        return $data;
+        return [
+            'base_code' => $xrate['base_code'],
+            'target_code' => $xrate['target_code'],
+            'rate' => $xrate['conversion_rate']
+        ];
     }
 }

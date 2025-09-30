@@ -8,6 +8,6 @@ Route::get('/', function () {
 });
 
 Route::name('xrate.')->group(function () {
+    Route::get('/xrate/rates', [XrateController::class, 'rates'])->name('rates');
     Route::get('/xrate', [XrateController::class, 'index'])->name('index');
-    Route::get('/rates', [XrateController::class, 'rates'])->name('rates');
 });

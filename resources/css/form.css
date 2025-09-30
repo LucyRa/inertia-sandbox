@@ -25,6 +25,7 @@ textarea {
     background-color: var(--base);
     color: var(--text);
     text-overflow: elipsis;
+    font-style: italic;
 
     &:focus-visible {
         outline: var(--teal) solid 0.125rem;
