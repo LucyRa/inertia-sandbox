@@ -35,7 +35,7 @@
 
     <section v-if="conversion">
         <pre>
-            {{ conversion.props }}
+            {{ conversion }}
         </pre>
     </section>
   </main>
