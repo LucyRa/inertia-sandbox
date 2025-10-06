@@ -48,7 +48,7 @@ import { Head, router, useForm } from '@inertiajs/vue3'
 defineProps({ conversion: Object })
 
 // TODO:: Ensure selects can't share a value...
-const form = useForm({ from: null, to: null })
+const form = useForm({ from: null, to: null, amount: null })
 
 const rate = ref(null)
 const page = window.location.href
@@ -60,6 +60,14 @@ function setRate () {
     })
 }
 
+/*
+ * Update to reset form when a subsequent submission is attempted...
+ * - currently subsequent hits load the rates route with JSON response
+ *
+ * OR
+ *
+ * Handle in controller by checking incoming request and returning/redirecting as appropriate.
+ */
 function getRate() {
     form
         .transform((data) => ({
